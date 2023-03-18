@@ -209,6 +209,7 @@ awful.screen.connect_for_each_screen(function(s)
         },
         s.mytasklist, -- Middle widget
         { -- Right widgets
+            require("battery-widget") {},
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
             wibox.widget.systray(),
@@ -278,8 +279,8 @@ globalkeys = gears.table.join(
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
-    awful.key({ modkey, "Shift"   }, "q", awesome.quit,
-              {description = "quit awesome", group = "awesome"}),
+    awful.key({ modkey, "Shift"   }, "c", awesome.quit,
+              {description = "Close awesome", group = "awesome"}),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
               {description = "increase master width factor", group = "layout"}),
@@ -326,7 +327,14 @@ globalkeys = gears.table.join(
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+              {description = "show the menubar", group = "launcher"}),
+
+    -- My stuff
+    awful.key({ modkey, "Shift"   }, "Return", function () awful.spawn("flatpak run com.brave.Browser") end,
+              {description = "Open Brave", group = "launcher"}),
+    awful.key({ modkey, "Shift"   }, "n", function () awful.spawn("neovide --frame none") end,
+              {description = "Open in Neovide", group = "launcher"})
+
 )
 
 clientkeys = gears.table.join(
@@ -336,8 +344,8 @@ clientkeys = gears.table.join(
             c:raise()
         end,
         {description = "toggle fullscreen", group = "client"}),
-    awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end,
-              {description = "close", group = "client"}),
+    awful.key({ modkey, "Shift"   }, "q",      function (c) c:kill()                         end,
+              {description = "Close application", group = "client"}),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
@@ -562,3 +570,13 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+-- Run nitrogren to get the wallpaper
+awful.spawn.single_instance("nitrogen --restore")
+-- Run xinput to configure the trackpad
+awful.spawn.single_instance('xinput set-prop "10" "libinput Tapping Enabled" 1')
+awful.spawn.single_instance('xinput set-prop "10" "libinput Natural Scrolling Enabled" 1')
+
+-- Gaps
+beautiful.useless_gap = 6
+beautiful.gap_single_client = false
