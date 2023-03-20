@@ -204,13 +204,19 @@ awful.screen.connect_for_each_screen(function(s)
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
-            mylauncher,
+            --mylauncher,
             s.mytaglist,
             s.mypromptbox,
         },
         s.mytasklist, -- Middle widget
         { -- Right widgets
-            require("battery-widget") {},
+            require("battery-widget") {
+                battery_prefix = "BAT: ",
+                percent_colors = {},
+                listen = true,
+                timeout = 10,
+                widget_font = "Jet Brains Mono 14"
+            },
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
             wibox.widget.systray(),
@@ -333,8 +339,8 @@ globalkeys = gears.table.join(
     -- My stuff
     awful.key({ modkey, "Shift"   }, "Return", function () awful.spawn("flatpak run com.brave.Browser") end,
               {description = "Open Brave", group = "launcher"}),
-    awful.key({ modkey, "Shift"   }, "n", function () awful.spawn("neovide --frame none") end,
-              {description = "Open in Neovide", group = "launcher"})
+    awful.key({ modkey, "Shift"   }, "f", function () awful.spawn("nemo") end,
+              {description = "Open File Browser", group = "launcher"})
 
 )
 
@@ -574,10 +580,17 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 -- Run nitrogren to get the wallpaper
 awful.spawn.single_instance("nitrogen --restore")
+
+-- Run nm-applet to get wifi in the system tray
+awful.spawn.single_instance('nm-applet &')
+
+-- Run Picom... cause picom
+awful.spawn.single_instance('picom')
+
 -- Run xinput to configure the trackpad
 awful.spawn.single_instance('xinput set-prop "10" "libinput Tapping Enabled" 1')
 awful.spawn.single_instance('xinput set-prop "10" "libinput Natural Scrolling Enabled" 1')
 
 -- Gaps
-beautiful.useless_gap = 6
-beautiful.gap_single_client = false
+beautiful.useless_gap = 10
+beautiful.gap_single_client = true
