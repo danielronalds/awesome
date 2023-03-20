@@ -11,24 +11,25 @@ local themes_path = gfs.get_themes_dir()
 
 local theme = {}
 
-theme.font          = "sans 8"
+-- Not sure if this is the right font...
+theme.font          = "jet_brains_mono 12"
 
-theme.bg_normal     = "#222222"
-theme.bg_focus      = "#535d6c"
+theme.bg_normal     = "#282828"
+theme.bg_focus      = "#d79921"
 theme.bg_urgent     = "#ff0000"
 theme.bg_minimize   = "#444444"
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = "#aaaaaa"
-theme.fg_focus      = "#ffffff"
-theme.fg_urgent     = "#ffffff"
-theme.fg_minimize   = "#ffffff"
+theme.fg_normal     = "#ebdbb2"
+theme.fg_focus      = "#ebdbb2"
+theme.fg_urgent     = "#ebdbb2"
+theme.fg_minimize   = "#ebdbb2"
 
 theme.useless_gap   = dpi(0)
 theme.border_width  = dpi(1)
-theme.border_normal = "#000000"
-theme.border_focus  = "#535d6c"
-theme.border_marked = "#91231c"
+theme.border_normal = "#282828"
+theme.border_focus  = "#d79921"
+theme.border_marked = "#cc241d"
 
 -- There are other variable sets
 -- overriding the default one when
@@ -124,7 +125,7 @@ theme.awesome_icon = theme_assets.awesome_icon(
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
-theme.icon_theme = nil
+theme.icon_theme = "/home/danielronalds/.icons/gruvbox-plus-icon-pack/"
 
 return theme
 
