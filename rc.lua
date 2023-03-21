@@ -211,7 +211,7 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             require("battery-widget") {
-                battery_prefix = "BAT: ",
+                battery_prefix = " BAT: ",
                 percent_colors = {},
                 listen = true,
                 timeout = 10,
@@ -340,8 +340,19 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Shift"   }, "Return", function () awful.spawn("flatpak run com.brave.Browser") end,
               {description = "Open Brave", group = "launcher"}),
     awful.key({ modkey, "Shift"   }, "f", function () awful.spawn("nemo") end,
-              {description = "Open File Browser", group = "launcher"})
+              {description = "Open File Browser", group = "launcher"}),
 
+    -- Brightness
+    awful.key({ }, "XF86MonBrightnessDown", function () awful.util.spawn("light -U 5") end,
+              {description = "Turn brightness down", group = "Brightness"}),
+    awful.key({ }, "XF86MonBrightnessUp", function () awful.util.spawn("light -A 5") end,
+              {description = "Turn brightness up", group = "Brightness"}),
+
+    -- Sound
+    awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("pactl set-sink-volume 0 +10%") end,
+              {description = "Turn sound up", group = "Sound"}),
+    awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("pactl set-sink-volume 0 -10%") end,
+              {description = "Turn sound down", group = "Sound"})
 )
 
 clientkeys = gears.table.join(
