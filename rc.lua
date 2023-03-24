@@ -589,19 +589,20 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
--- Run nitrogren to get the wallpaper
+-- Restoring the wallpaper
 awful.spawn.single_instance("nitrogen --restore")
 
--- Run nm-applet to get wifi in the system tray
+-- Confiugring the trackpad
+awful.spawn.with_shell('xinput set-prop "10" "libinput Tapping Enabled" 1')
+awful.spawn.with_shell('xinput set-prop "10" "libinput Natural Scrolling Enabled" 1')
+
+-- Running nm-applet for wifi control in the systray
 awful.spawn.single_instance('nm-applet &')
 
--- Run Picom... cause picom
-awful.spawn.single_instance('picom')
-
--- Run xinput to configure the trackpad
-awful.spawn.single_instance('xinput set-prop "10" "libinput Tapping Enabled" 1')
-awful.spawn.single_instance('xinput set-prop "10" "libinput Natural Scrolling Enabled" 1')
+-- Running picom
+awful.spawn.with_shell("picom &")
 
 -- Gaps
 beautiful.useless_gap = 10
 beautiful.gap_single_client = true
+
