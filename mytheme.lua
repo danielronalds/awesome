@@ -14,23 +14,23 @@ local theme = {}
 -- Not sure if this is the right font...
 theme.font          = "jet_brains_mono 12"
 
-theme.bg_normal     = "#1d2021"
+theme.bg_normal     = "#2E3440"
 --theme.bg_normal     = "#282828"
-theme.bg_focus      = "#282828"
+theme.bg_focus      = "#3B4252"
 --theme.bg_focus      = "#3c3836"
-theme.bg_urgent     = "#fb4934"
-theme.bg_minimize   = "#928374"
+theme.bg_urgent     = "#BF616A"
+theme.bg_minimize   = "#2E3440"
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = "#ebdbb2"
-theme.fg_focus      = "#ebdbb2"
-theme.fg_urgent     = "#ebdbb2"
-theme.fg_minimize   = "#ebdbb2"
+theme.fg_normal     = "#ECEFF4"
+theme.fg_focus      = "#ECEFF4"
+theme.fg_urgent     = "#ECEFF4"
+theme.fg_minimize   = "#ECEFF4"
 
 theme.useless_gap   = dpi(0)
 theme.border_width  = dpi(1)
-theme.border_normal = "#282828"
-theme.border_focus  = "#98971a"
+theme.border_normal = "#434C5E"
+theme.border_focus  = "#4C566A"
 --theme.border_focus  = "#d79921"
 theme.border_marked = "#cc241d"
 
@@ -128,7 +128,7 @@ theme.awesome_icon = theme_assets.awesome_icon(
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
-theme.icon_theme = "/home/danielronalds/.icons/gruvbox-plus-icon-pack/"
+--theme.icon_theme = "/home/danielronalds/.icons/gruvbox-plus-icon-pack/"
 
 return theme
 
