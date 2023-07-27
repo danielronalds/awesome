@@ -14,8 +14,10 @@ local theme = {}
 -- Not sure if this is the right font...
 theme.font          = "jet_brains_mono 12"
 
-theme.bg_normal     = "#282828"
-theme.bg_focus      = "#3c3836"
+theme.bg_normal     = "#1d2021"
+--theme.bg_normal     = "#282828"
+theme.bg_focus      = "#282828"
+--theme.bg_focus      = "#3c3836"
 theme.bg_urgent     = "#fb4934"
 theme.bg_minimize   = "#928374"
 theme.bg_systray    = theme.bg_normal
@@ -28,7 +30,8 @@ theme.fg_minimize   = "#ebdbb2"
 theme.useless_gap   = dpi(0)
 theme.border_width  = dpi(1)
 theme.border_normal = "#282828"
-theme.border_focus  = "#d79921"
+theme.border_focus  = "#98971a"
+--theme.border_focus  = "#d79921"
 theme.border_marked = "#cc241d"
 
 -- There are other variable sets

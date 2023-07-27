@@ -339,8 +339,16 @@ globalkeys = gears.table.join(
     -- My stuff
     awful.key({ modkey, "Shift"   }, "Return", function () awful.spawn("flatpak run com.brave.Browser") end,
               {description = "Open Brave", group = "launcher"}),
+
+    awful.key({ modkey, "Shift"   }, "o", function () awful.spawn("flatpak run md.obsidian.Obsidian") end,
+              {description = "Open Obsidian", group = "launcher"}),
+
     awful.key({ modkey, "Shift"   }, "f", function () awful.spawn("nemo") end,
               {description = "Open File Browser", group = "launcher"}),
+
+    awful.key({ modkey, "Shift"   }, "b", function () awful.spawn("blueman-manager") end,
+              {description = "Open Bluetooth", group = "launcher"}),
+
 
     -- Brightness
     awful.key({ }, "XF86MonBrightnessDown", function () awful.util.spawn("light -U 5") end,
@@ -349,9 +357,9 @@ globalkeys = gears.table.join(
               {description = "Turn brightness up", group = "Brightness"}),
 
     -- Sound
-    awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("pactl set-sink-volume 0 +10%") end,
+    awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("pactl set-sink-volume 0 +5%") end,
               {description = "Turn sound up", group = "Sound"}),
-    awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("pactl set-sink-volume 0 -10%") end,
+    awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("pactl set-sink-volume 0 -5%") end,
               {description = "Turn sound down", group = "Sound"})
 )
 
@@ -593,8 +601,8 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 awful.spawn.single_instance("nitrogen --restore")
 
 -- Confiugring the trackpad
-awful.spawn.with_shell('xinput set-prop "10" "libinput Tapping Enabled" 1')
-awful.spawn.with_shell('xinput set-prop "10" "libinput Natural Scrolling Enabled" 1')
+awful.spawn.with_shell('xinput set-prop "9" "libinput Tapping Enabled" 1')
+awful.spawn.with_shell('xinput set-prop "9" "libinput Natural Scrolling Enabled" 1')
 
 -- Running nm-applet for wifi control in the systray
 awful.spawn.single_instance('nm-applet &')
