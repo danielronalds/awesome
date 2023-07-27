@@ -343,8 +343,12 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Shift"   }, "o", function () awful.spawn("flatpak run md.obsidian.Obsidian") end,
               {description = "Open Obsidian", group = "launcher"}),
 
-    awful.key({ modkey, "Shift"   }, "f", function () awful.spawn("nemo") end,
-              {description = "Open File Browser", group = "launcher"}),
+    -- Opening Ranger
+    awful.key({ modkey, "Shift"   }, "f", function () awful.spawn("kitty ranger") end,
+              {description = "Open Ranger File Browser", group = "launcher"}),
+    -- Opening Nemo
+    awful.key({ modkey, "Shift", "Ctrl"   }, "f", function () awful.spawn("nemo") end,
+              {description = "Open Nemo File Browser", group = "launcher"}),
 
     awful.key({ modkey, "Shift"   }, "b", function () awful.spawn("blueman-manager") end,
               {description = "Open Bluetooth", group = "launcher"}),
